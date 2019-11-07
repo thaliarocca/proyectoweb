@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+	
+	<form action="{% url 'entradas' %}" method="post" accept-charset="utf-8">
+		{%csrf_token%}<!--medida de seguridad-->
+		{{form2.as_p}}
+		<!--as_ul o as_table-->
+		<input type="submit" name="" value="Guardar">
+	</form>
+	<h1>Entradas del Blog</h1>
+	{% for entrada in entradas %}
+		<h2>{{entrada.titular}}</h2>
+		<p>{{entrada.contenido}}</p>
+	{% endfor %}
+{% endblock %}
